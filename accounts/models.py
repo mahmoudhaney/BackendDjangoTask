@@ -16,7 +16,7 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     :param instance: View Instance that sent the signal
     :param reset_password_token: Token Model Object
     """
-    email_message = "http://127.0.0.1:8000{}?token={}".format(reverse('accounts:password_reset:reset-password-request'), reset_password_token.key)
+    email_message = "http://127.0.0.1:8000{}?token={}".format(reverse('accounts:password_reset:reset-password-confirm'), reset_password_token.key)
     send_mail(
         "Reset Account Password",
         email_message,

@@ -7,19 +7,23 @@ from rest_framework.authtoken.models import Token
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(validators=[UniqueValidator(queryset=User.objects.all())])
-    phone_number = serializers.CharField(validators=[UniqueValidator(queryset=User.objects.all())])
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
     password2 = serializers.CharField(write_only=True, required=True)
+    phone_number = serializers.CharField(required=False)
     class Meta:
         model = User
         fields = ('username', 'password', 'password2', 'email', 'first_name', 'last_name', 'address', 'phone_number')
-        extra_kwargs = {
-        'phone_number': {'required': False},
-        }
 
     def validate(self, attrs):
         if attrs['password'] != attrs['password2']:
             raise serializers.ValidationError({"password": "Password fields don't match."})
+
+        if attrs.get('phone_number'):
+            if not attrs['phone_number'].strip():
+                raise serializers.ValidationError({"phone_number": "Phone number cannot be empty"})
+            if User.objects.filter(phone_number=attrs['phone_number']).exists():
+                raise serializers.ValidationError({"phone_number": "This phone number is already used"})
+
         return attrs
 
     def create(self, validated_data):

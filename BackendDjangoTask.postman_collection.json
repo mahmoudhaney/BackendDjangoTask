@@ -1,0 +1,495 @@
+{
+	"info": {
+		"_postman_id": "aa3efdb4-3151-4ff5-8785-4e7a7cf2e8ae",
+		"name": "BackendDjangoTask",
+		"description": "Whether you're just starting out in your career, looking for a change, or trying to advance to the next level, we have thousands of jobs to choose from in various industries and locations.\n\nOur easy-to-use search tools make finding jobs matching your skills and interests simple. And with our advanced filtering options, you can narrow down your search results to find the perfect job for you.\n\nOnce you've found a few jobs you're interested in, you can easily apply online or contact the employer directly. We also offer a variety of resources to help you prepare for your job search, including resume and cover letter writing tips, interview advice, and more.\n\nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23723164"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "new_user992",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "new_password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"login",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- Must have correct `email` and `password`"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token bbd97e28acde9e4be808bf88bf09d10de6e19a",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/logout/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"logout",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- Must have correct `email` and `password`"
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "new_user992",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "new_password",
+									"type": "text"
+								},
+								{
+									"key": "password2",
+									"value": "new_password",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "new929@example.com",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "Mahmoud",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Haney",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Cairo",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"register",
+								""
+							]
+						},
+						"description": "- Anyone can Signup in the system.\n- All Fields are required."
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN b95a859714ca9065b8efc2030a8a9778c1d9e5d2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "old_password",
+									"value": "new_password",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "Django1234",
+									"type": "text"
+								},
+								{
+									"key": "new_password2",
+									"value": "Django1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/change-password/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"change-password",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- valid `token` and `old_password` are required.\n- `new_password` must be valid."
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "mahmoudhaney@icloud.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/reset-password/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"reset-password",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- `email` which the user used to signup."
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Confirm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "d7c53c613267aa",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Django4321",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/reset-password/confirm/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"reset-password",
+								"confirm",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- token which is sent to user email.\n    \n- new password and must be valid."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Publish Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token da6a2372a666c8712e4785110d9e9d59ca73bf0d",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Mahmoud Haney 3 Post 3;",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "This is Mahmoud Haney 3 Post",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/publish/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"publish",
+								""
+							]
+						},
+						"description": "List all jobs"
+					},
+					"response": []
+				},
+				{
+					"name": "List Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/posts/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"posts",
+								""
+							]
+						},
+						"description": "List all jobs"
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/posts/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"posts",
+								"3"
+							]
+						},
+						"description": "List all jobs"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token c8bcee138bcbdebb2f6d77f354532179a28d2fe6",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Test Post 1 Updated",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "This is my first post here.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/posts/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"posts",
+								"1",
+								""
+							]
+						},
+						"description": "List all jobs"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token df7c63321859b8d00a96c62e6b42babf43ac7c3d",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Test Post 1 Updated",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "This is my first post here.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/blog/posts/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"posts",
+								"2",
+								""
+							]
+						},
+						"description": "List all jobs"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
